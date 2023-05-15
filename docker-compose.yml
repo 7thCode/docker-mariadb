@@ -7,13 +7,15 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - "./mysql:/var/lib/mysql"
-      - "./initdb.d:/docker-entrypoint-initdb.d"
+      - maria_data:/var/lib/mysql
+      - ./initdb.d:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=pwd
       - MYSQL_DATABASE=test
       - MYSQL_USER=user
       - MYSQL_PASSWORD=pwd
+volumes:
+  maria_data:      
 #
 #  phpmyadmin:
 #    image: phpmyadmin/phpmyadmin
